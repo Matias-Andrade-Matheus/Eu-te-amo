@@ -1,0 +1,1022 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>6 Meses Juntos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d10;
+    --card:#0f1216;
+    --muted:#9aa3b2;
+    --accent:#014ab8;
+    --glass: rgba(255,255,255,0.03);
+  }
+
+  *{box-sizing:border-box}
+
+    html,body{
+        height:100%;
+        margin:0; 
+        background: var(--bg);
+        font-family:Inter, Arial, sans-serif;  
+        color:#e6eef9;
+        overflow-x: hidden;
+    }
+
+    a{color:inherit}
+    header{padding:28px 32px;display:flex;align-items:center;justify-content:space-between}
+    header .brand{font-weight:700;letter-spacing:1px}
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+
+    #introducao {
+            background: linear-gradient(135deg, #07080a 0%, #0b0d10 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40vh;
+            overflow: hidden;
+            position: relative;
+    }
+
+    #introducao span.letra {
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            top: 20px;
+            color: white;
+            display: inline-block;
+            font-size: 5rem;
+            text-shadow: 0 1px 0 #b7b7b7, 0 2px 0 #b7b7b7,
+            0 3px 0 #b7b7b7, 0 4px 0 #b7b7b7,
+            0 5px 0 #b7b7b7, 0 6px 0 #b7b7b7,
+            0 7px 0 #b7b7b7, 0 8px  0 transparent,
+            0 9px 0 transparent, 0 10px 0 transparent,
+            0 11px 0 transparent, 0 12px 0 transparent,
+            0 13px 0 transparent, 0 14px 0 transparent,
+            0 15px 15px rgba(0, 0, 0, 0.5);
+            animation: bounce 0.3s ease infinite alternate;
+    }
+
+    .palavra {
+            display: inline-block;
+            margin: 0 20px;
+        }
+
+    #introducao h1 .palavra:nth-child(1) span:nth-child(1){ animation-delay: 0.0s; }
+    #introducao h1 .palavra:nth-child(1) span:nth-child(2){ animation-delay: 0.0s; }
+
+    #introducao h1 .palavra:nth-child(2) span:nth-child(1){ animation-delay: 0.1s; }
+    #introducao h1 .palavra:nth-child(2) span:nth-child(2){ animation-delay: 0.1s; }
+
+    #introducao h1 .palavra:nth-child(3) span:nth-child(1){ animation-delay: 0.2s; }
+    #introducao h1 .palavra:nth-child(3) span:nth-child(2){ animation-delay: 0.2s; }
+    #introducao h1 .palavra:nth-child(3) span:nth-child(3){ animation-delay: 0.2s; }
+    #introducao h1 .palavra:nth-child(3) span:nth-child(4){ animation-delay: 0.2s; }
+
+    @keyframes bounce {
+        100% {
+                top: -20px;
+                text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc,
+                0 3px 0 #ccc, 0 4px 0 #ccc,
+                0 5px 0 #ccc, 0 6px 0 #ccc,
+                0 7px 0 #ccc, 0 8px  0 #ccc,
+                0  9px 0 #ccc, 0 10px 0 #ccc,
+                0 11px 0 #ccc, 0 12px 0 #ccc,
+                0 13px 0 #ccc, 0 14px 0 #ccc,
+                0 60px 30px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .hero{
+        background: radial-gradient(circle at 12% 12%, rgba(1,74,184,0.12), transparent 10%),
+                    linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        border-radius:14px;
+        padding:42px;
+        display:flex;
+        gap:28px;
+        align-items:center;
+        margin:12px 0 28px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Sistema de estrelas caindo */
+    .stars-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .star {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        animation: fall linear infinite;
+        opacity: 0;
+    }
+    
+    .star.small {
+        width: 2px;
+        height: 2px;
+    }
+    
+    .star.medium {
+        width: 3px;
+        height: 3px;
+    }
+    
+    .star.large {
+        width: 4px;
+        height: 4px;
+    }
+    
+    @keyframes fall {
+        0% {
+            transform: translateY(-10px) translateX(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) translateX(20px);
+            opacity: 0;
+        }
+    }
+
+    .hero .text{
+        flex:1;
+        position: relative;
+        z-index: 2;
+    }
+    .hero h1{font-size:2.4rem;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 20px;line-height:1.5}
+
+    .hero .portrait{
+        width:220px;
+        height:300px;
+        border-radius:14px;
+        overflow:hidden;
+        position:relative;
+        flex-shrink:0;
+        background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+        display:flex;align-items:center;justify-content:center;
+        box-shadow: 0 18px 40px rgba(2,7,15,0.7);
+        border:1px solid rgba(255,255,255,0.04);
+    }
+    
+    .photo-wrapper {
+        position: relative;
+        z-index: 2;
+    }
+
+    .photo-wrapper img {
+        position: relative;
+        z-index: 2;
+        width: 320px;
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
+    }
+
+    /* Seção com parallax */
+    .parallax-section {
+        position: relative;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 60px 0;
+        margin: 40px 0;
+    }
+    
+    .parallax-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(11, 13, 16, 0.7);
+        z-index: 1;
+    }
+    
+    .parallax-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* 6-month gallery (cards consistent style) */
+    .gallery{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:18px;
+        margin:18px 0 38px;
+    }
+    .card{
+        background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        border-radius:12px;
+        padding:12px;
+        height:160px;
+        overflow:hidden;
+        position:relative;
+        display:flex;flex-direction:column;justify-content:flex-end;
+        transition:transform .28s ease, box-shadow .28s ease;
+        border:1px solid rgba(255,255,255,0.03);
+    }
+    .card:hover{
+        transform:translateY(-8px);
+        box-shadow:0 22px 40px rgba(2,7,15,0.6);
+    }
+    .card .thumb{
+        position:absolute;
+        inset:0;
+        background-size:cover;
+        background-position:center;
+        filter:grayscale(100%) contrast(1.05) brightness(.3);
+        z-index:0;
+    }
+    .card .meta{
+        position:relative;
+        z-index:2;
+        color:#fff;
+        padding:10px;
+    }
+    .card .meta small{
+        display:block;
+        color:var(--muted);
+        font-size:.85rem;}
+
+    .proven{
+        margin:28px 0;
+        padding:20px;
+        border-radius:12px;
+        background:var(--card);
+        border:1px solid rgba(255,255,255,0.02);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .proven::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 70% 20%, rgba(1,74,184,0.05), transparent 50%);
+        z-index: 1;
+    }
+    
+    .proven > * {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .accordion .item + .item{margin-top:12px}
+    .accordion .item button{
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        background:transparent;
+        border:0;
+        color:#e9f0ff;
+        padding:12px;
+        border-radius:8px;
+        cursor:pointer;
+        font-weight:600;
+        text-align:left;
+        transition: background 0.3s ease;
+    }
+    
+    .accordion .item button:hover {
+        background: rgba(255,255,255,0.05);
+    }
+    
+    .panel{
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .28s ease;
+        padding:0 12px;
+        color:var(--muted);
+    }
+
+    /* PLAYER ATUALIZADO - DESIGN COMPLETO */
+    .player{
+        margin:24px 0;
+        padding:20px;
+        border-radius:12px;
+        background:linear-gradient(180deg, rgba(1,74,184,0.05), transparent);
+        border:1px solid rgba(255,255,255,0.02);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .player::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 30% 70%, rgba(1,74,184,0.03), transparent 50%);
+        z-index: 1;
+    }
+    
+    .player > * {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .player-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .album-art {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        background: #081425;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+    
+    .track-info {
+        flex: 1;
+    }
+    
+    .track-info h3 {
+        margin: 0 0 4px;
+        font-size: 1.2rem;
+    }
+    
+    .track-info p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+    
+    .progress-container {
+        margin: 20px 0;
+    }
+    
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 8px;
+    }
+    
+    .progress {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 3px;
+        width: 0%;
+        transition: width 0.1s ease;
+    }
+    
+    .time-display {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+    
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin: 20px 0;
+    }
+    
+    .control-btn {
+        background: rgba(255,255,255,0.05);
+        border: none;
+        color: #e6eef9;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .control-btn:hover {
+        background: rgba(255,255,255,0.1);
+        transform: scale(1.05);
+    }
+    
+    .control-btn.play-pause {
+        width: 50px;
+        height: 50px;
+        background: var(--accent);
+    }
+    
+    .control-btn.play-pause:hover {
+        background: #0158d4;
+        transform: scale(1.08);
+    }
+    
+    .volume-control {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 15px 0;
+    }
+    
+    .volume-bar {
+        flex: 1;
+        height: 4px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .volume-level {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 2px;
+        width: 80%;
+    }
+    
+    .tracks-list {
+        max-height: 300px;
+        overflow-y: auto;
+        margin-top: 20px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.02);
+        padding: 8px;
+    }
+    
+    .tracks-list::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .tracks-list::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+        border-radius: 3px;
+    }
+    
+    .tracks-list::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 3px;
+    }
+    
+    .track{
+        cursor:pointer;
+        padding:12px;
+        border-radius:8px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .track:hover{background:rgba(255,255,255,0.02)}
+    .track.active{
+        background:rgba(1,74,184,0.14);
+        color: #fff;
+    }
+    
+    .track-number {
+        width: 20px;
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+    
+    .track.active .track-number {
+        color: #fff;
+    }
+    
+    .track-info-small {
+        flex: 1;
+    }
+    
+    .track-title {
+        font-weight: 500;
+        margin-bottom: 2px;
+    }
+    
+    .track-duration {
+        font-size: 0.75rem;
+        color: var(--muted);
+    }
+    
+    .autoplay-message {
+        background: rgba(1,74,184,0.1);
+        border: 1px solid rgba(1,74,184,0.3);
+        border-radius: 8px;
+        padding: 12px;
+        margin: 15px 0;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--muted);
+    }
+
+    /* final special */
+    .special{
+        margin:30px 0;
+        padding:30px;
+        border-radius:12px;
+        background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(1,74,184,0.02));
+        text-align:center;
+        border:1px dashed rgba(255,255,255,0.03);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .special::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(1,74,184,0.03), transparent 70%);
+        z-index: 1;
+    }
+    
+    .special > * {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .muted{color:var(--muted)}
+
+    @media(max-width:900px){
+        .gallery{grid-template-columns:repeat(2,1fr)}
+        .hero{flex-direction:column;align-items:stretch}
+        .portrait{width:100%;height:360px}
+        #introducao span.letra {
+            font-size: 3.5rem;
+        }
+    }
+    @media(max-width:520px){
+        .gallery{grid-template-columns:1fr}
+        #introducao span.letra {
+            font-size: 2.5rem;
+        }
+        .hero {
+            padding: 24px;
+        }
+        
+        .player-header {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .controls {
+            gap: 12px;
+        }
+        
+        .control-btn {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .control-btn.play-pause {
+            width: 44px;
+            height: 44px;
+        }
+    }
+</style>
+</head>
+<body>
+    <main class="container">
+        <section id="introducao">
+            <h1>
+                <span class="palavra">
+                    <span class="letra">E</span>
+                    <span class="letra">U</span>
+                </span>
+
+                <span class="palavra">
+                    <span class="letra">T</span>
+                    <span class="letra">E</span>
+                </span>
+                
+                <span class="palavra">
+                    <span class="letra">A</span>
+                    <span class="letra">M</span>
+                    <span class="letra">O</span>
+                    <span class="letra">!</span>
+                </span>
+            </h1>
+        </section>
+
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="stars-container" id="starsContainer"></div>
+            
+            <div class="text">
+                <h1 id="hero-title">6 Meses ao Teu Lado</h1>
+                <p>Meu amor, cada dia contigo é uma página nova na nossa história, uma página web disponível para nós dois online e sem fio. Este site é minha forma de eternizar tudo que vivemos até aqui e dizer o quanto você significa para mim. Meus dias se tornaram melhores, mais bonitos, mais completos, mais felizes; a explicação disso? Você estava comigo durante esses meses e fez cada momento inesquecível, cada dia que eu escrevia algo era só para de mostrar que eu ainda te amo, ainda te quero perto e o ainda se tornou um agora e o agora se tornou sempre, foi uma decisão eu vou te amar para sempre.</p>
+                <p>Não sei dizer o que eu ainda vou viver ao seu lado, mas sei que cada instante será especial já que você estará comigo, já que você também pensará comigo, já que meus pensamentos bobos vão ser escutados, não só por mim, mas por você que, provavelmente, vai mostrar que eles não são tão bobos, ou que são completamente bobos, idiotas e tolos. Sendo assim, vou te amar mais e vou te querer mais e te dizer mais e te sentir mais e quando fui ver já tava fazendo mais do que já fiz por qualquer pessoa para você. Um dia, se a gente se tornar só amigos, eu vou lembrar que eu nunca te esqueci e que valeu a pena cada coisinha que escrevi de você, para você, com você.</p>
+            </div>
+
+            <figure class="photo-wrapper" title="Uma foto da garota mais linda do mundo">
+                <img src="imagens/foto.png" alt="Uma foto da garota mais linda do mundo">
+            </figure>
+        </section>
+
+        <section class="parallax-section" style="border-radius: 20px; background-image: url('imagens/bahia-praias-caraiva-820x547.jpg');">
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
+                <h2 style="margin-bottom:10px; text-align: center;">Nossa Jornada de 6 Meses</h2>
+                <div class="gallery" id="gallery">
+                    <div class="card">
+                    <div class="thumb" style="background-image:url('imagens/primeiro-mes.jpg')"></div>
+                    <div class="meta"><strong>Primeiro Mês</strong><small>Quando fizemos as primeiras trocas de declarações</small></div>
+                    </div>
+                    <div class="card">
+                    <div class="thumb" style="background-image:url('imagens/segundo-mes.png')"></div>
+                    <div class="meta"><strong>Segundo Mês</strong><small>Risos que ecoaram na memória</small></div>
+                    </div>
+                    <div class="card">
+                    <div class="thumb" style="background-image:url('imagens/terceiro-mes.png')"></div>
+                    <div class="meta"><strong>Terceiro Mês</strong><small>Poesia que se reflete junto dos seus segredos até hoje</small></div>
+                    </div>
+                    <div class="card">
+                    <div class="thumb" style="background-image:url('imagens/quarto-mes.jpeg')"></div>
+                    <div class="meta"><strong>Quarto Mês</strong><small>Confiança que não teria em mais ninguém (não tinha nem em mim mesmo)</small></div>
+                    </div>
+                    <div class="card">
+                    <div class="thumb" style="background-image:url('imagens/quinto-mes.png')"></div>
+                    <div class="meta"><strong>Quinto Mês</strong><small>Com as declarações mais bem experienciadas em ambos os lados</small></div>
+                    </div>
+                    <div class="card">
+                    <div class="thumb" style="background-image:url('imagens/sexto-mes.jpg')"></div>
+                    <div class="meta"><strong>Sexto Mês</strong><small>Planos que começamos a construir</small></div>
+                    </div>
+                </div>
+                <p class="muted" style="font-size:.92rem; text-align: center; color: white;">As imagens não estão na ordem certa então releva se não tiver na data certa... O importante é o sentimento por trás de cada momento e todos foram sensacionais de mais para não aparecerem, apesar de que eu queria ter posto muitos outros aqui... Enfim...</p>
+            </div>
+        </section>
+
+        <section class="proven" aria-labelledby="proven-title">
+        <h2 id="proven-title">O Que aprendi com Você</h2>
+        <div class="accordion" id="learnings">
+            <div class="item">
+            <button type="button" data-target="p1">Um sorriso salva vidas</button>
+            <div class="panel" id="p1">
+                <p class="muted">Nem eu acriditei nas conquistas que estavam e estaram por vir e nomeio desse mar de melancolias você veio mais forte que a correnteza e eu aprendi que eu quero ser o que eu imaginar e descobri uma criança escondida que tenta mudar o mundo antes mesmo de nascer</p>
+            </div>
+            </div>
+
+            <div class="item">
+            <button type="button" data-target="p2">Pequenos gestos salvam uma semana</button>
+            <div class="panel" id="p2">
+                <p class="muted">As mensagens de boa-noite que não serviam só pra ti, as músicas que me fazem lembrar de você. Aprendi a valorizar essas pequenas coisas que significam tanto para nos dois desde que tudo começou e agora nada me tira da cabeça o quanto que isso fez toda a diferença para chegarmos aqui hoje e poder comemorar</p>
+            </div>
+            </div>
+
+            <div class="item">
+            <button type="button" data-target="p3">As coisas que se pode fazer acreditando</button>
+            <div class="panel" id="p3">
+                <p class="muted">Você tem uma sensibilidade única para encontrar beleza nas coisas mais simples e daí me surgiu vontades que eu nem acreditava mais. Uma sede pela descoberta de como os sistemas funcionam. De como tudo isso começou e tudo isso eu devo à você, claro que os professores ajudaram, mas esse interesse só me veio por sua conta</p>
+            </div>
+            </div>
+
+            <div class="item">
+            <button type="button" data-target="p4">Sua forca que me inspira</button>
+            <div class="panel" id="p4">
+                <p class="muted">Por causa do meu amor por ti eu tive várias ideias sobre muitas coisas, prova disso é o poema que eu fiz pra você. Aprendi que por trás dessa delicadeza há uma força impressionante. Sua capacidade de enfrentar os desafios diários me inspira e me inspirou a ser uma pessoa melhor todos os dias. Aprendi a observar o mundo com seus olhos e a colecionar esses momentos de beleza ao seu lado. Aprendi à crescer como pessoa, à enteder o que é fácil de ser confundido com uma atitude babaca e finalmente vencer o fantasma do medo de falar com as pessoas da forma como elas precisam enteder sobre mim e sobre todos ao seu redor</p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section class="parallax-section" style="margin: 20px; border-radius: 15px; background-image: url('imagens/musica.jpg');">
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
+                <h2 style="text-align: center;">Nossa Trilha Sonora</h2>
+                <div class="player" id="player">
+                    <div class="autoplay-message" id="autoplayMessage">
+                        A reprodução automática pode estar bloqueada. Clique em qualquer música para começar.
+                    </div>
+                    
+                    <div class="player-header">
+                        <div class="album-art">♪</div>
+                        <div class="track-info">
+                            <h3 id="currentTrackTitle">Selecione uma música</h3>
+                            <p id="currentTrackArtist">Nossa playlist especial</p>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="control-btn" id="prevBtn" title="Anterior">⏮</button>
+                        <button class="control-btn play-pause" id="playPauseBtn" title="Play">▶</button>
+                        <button class="control-btn" id="nextBtn" title="Próximo">⏭</button>
+                    </div>
+                    
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <div class="volume-bar" id="volumeBar">
+                            <div class="volume-level" id="volumeLevel"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="tracks-list" id="tracksList">
+                        <!-- As faixas serão inseridas aqui via JavaScript -->
+                    </div>
+                </div>
+                <p class="muted">Clique em uma faixa para tocar. Estas são as músicas que marcaram nossa história até aqui.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    <div class="container" style="text-align:center; padding:20px 0; font-size:.9rem; color:var(--muted);">
+        &copy; 25 de novembro de 2025 Feito pelo seu admirador secreto, não tão secreto assim, com muito amor e carinho para<br>Camile Marques Ferreira Novais - O amor da minha vida.
+    </div>
+    </footer>
+
+<script>
+    // Sistema de estrelas
+    function createStars() {
+        const starsContainer = document.getElementById('starsContainer');
+        const starCount = 30;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const sizes = ['small', 'medium', 'large'];
+            const size = sizes[Math.floor(Math.random() * sizes.length)];
+            star.classList.add(size);
+            
+            star.style.left = `${Math.random() * 100}%`;
+            
+            const duration = 5 + Math.random() * 10;
+            const delay = Math.random() * 5;
+            
+            star.style.animationDuration = `${duration}s`;
+            star.style.animationDelay = `${delay}s`;
+            
+            starsContainer.appendChild(star);
+        }
+    }
+    
+    window.addEventListener('load', createStars);
+
+    // Sistema de accordion
+    document.querySelectorAll('.accordion .item button').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-target');
+        const panel = document.getElementById(id);
+        if(!panel) return;
+        document.querySelectorAll('.accordion .panel').forEach(p=>{
+            if(p!==panel) p.style.maxHeight = null;
+        });
+        if(panel.style.maxHeight){
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+        });
+    });
+
+    // PLAYER DE MÚSICA COMPLETO
+    const playlist = [
+        { title: "Roupa Nova - A Viagem", src: "musicas/a-viagem.mp3", duration: "3:33" },
+        { title: "Tim Maia - Eu Amo Você", src: "musicas/eu-amo-voce.mp3", duration: "4:03" },
+        { title: "Nando Reis - Pra você guardei o amor", src: "musicas/pra-voce-guardei-o-amor.mp3", duration: "3:50" },
+        { title: "Tim Maia - Você", src: "musicas/voce.mp3", duration: "4:04" },
+        { title: "Roupa Nova - Cristina", src: "musicas/cristina.mp3", duration: "3:30" },
+        { title: "Roberto Campos - De Janeiro A Janeiro", src: "musicas/de-janeiro-a-janeiro.mp3", duration: "4:10" },
+        { title: "Ainda bem - Marisa Monte", src: "musicas/ainda-bem.mp3", duration: "4:06" },
+        { title: "Ivyson - Moldura", src: "musicas/moldura.mp3", duration: "3:11" },
+        { title: "Roupa Nova - Seguindo No Trem Azul", src: "musicas/seguindo-no-trem-azul.mp3", duration: "" },
+        { title: "Kamaitachi - Lana", src: "musicas/lana.mp3", duration: "3:02" },
+        { title: "Marisa Monte - Amor I Love You", src: "musicas/amor-i-love-you.mp3", duration: "" },
+        { title: "Agnes e Tiago Iorc - Pode Se Achegar", src: "musicas/pode-se-achegar.mp3", duration: "3:59" },
+        { title: "Stephen Sanchez - Until I Found You", src: "musicas/until-i-found-you.mp3", duration: "" },
+        { title: "Mari Froes - Moça", src: "musicas/moca.mp3", duration: "5:01" },
+        { title: "Marisa Monte - Pra ser sincero", src: "musicas/pra-ser-sincero.mp3", duration: "" },
+        { title: "Tulipa Ruiz - Só Sei Dançar Com Você", src: "musicas/so-sei-dancar-com-voce.mp3", duration: "3:41" },
+        { title: "Stacey Ryan - Fall In Love Alone", src: "musicas/fall-in-love-alone.mp3", duration: "" },
+        { title: "Natiruts - Sorri, Sou Rei", src: "musicas/sorri-sou-rei.mp3", duration: "5:11" },
+        { title: "Jorge Vercillo - Final Feliz", src: "musicas/final-feliz.mp3", duration: "" },
+        { title: "Ana Carolina - Quem de Nós Dois", src: "musicas/quem-de-nos-dois.mp3", duration: "5:03" }
+    ];
+
+    const audio = new Audio();
+    let currentTrackIndex = 0;
+    let isPlaying = false;
+    let autoplayAttempted = false;
+
+    // Elementos do DOM
+    const currentTrackTitle = document.getElementById('currentTrackTitle');
+    const currentTrackArtist = document.getElementById('currentTrackArtist');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const progress = document.getElementById('progress');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const volumeBar = document.getElementById('volumeBar');
+    const volumeLevel = document.getElementById('volumeLevel');
+    const tracksList = document.getElementById('tracksList');
+    const autoplayMessage = document.getElementById('autoplayMessage');
+
+    // Inicializar lista de músicas
+    function initializePlaylist() {
+        tracksList.innerHTML = '';
+        playlist.forEach((track, index) => {
+            const trackElement = document.createElement('div');
+            trackElement.className = 'track';
+            trackElement.innerHTML = `
+                <div class="track-number">${index + 1}</div>
+                <div class="track-info-small">
+                    <div class="track-title">${track.title}</div>
+                    <div class="track-duration">${track.duration}</div>
+                </div>
+            `;
+            trackElement.addEventListener('click', () => playTrack(index));
+            tracksList.appendChild(trackElement);
+        });
+    }
+
+    // Reproduzir música específica
+    function playTrack(index) {
+        if (index < 0 || index >= playlist.length) return;
+        
+        currentTrackIndex = index;
+        const track = playlist[currentTrackIndex];
+        
+        audio.src = track.src;
+        audio.play().then(() => {
+            isPlaying = true;
+            updatePlayPauseButton();
+            autoplayMessage.style.display = 'none';
+            updateActiveTrack();
+            updateTrackInfo();
+        }).catch(error => {
+            console.log('Autoplay bloqueado:', error);
+            autoplayMessage.style.display = 'block';
+        });
+        
+        updateActiveTrack();
+        updateTrackInfo();
+    }
+
+    // Atualizar informações da música atual
+    function updateTrackInfo() {
+        const track = playlist[currentTrackIndex];
+        currentTrackTitle.textContent = track.title;
+        currentTrackArtist.textContent = 'Nossa playlist especial';
+    }
+
+    // Atualizar botão play/pause
+    function updatePlayPauseButton() {
+        playPauseBtn.innerHTML = isPlaying ? '⏸' : '▶';
+        playPauseBtn.title = isPlaying ? 'Pausar' : 'Play';
+    }
+
+    // Atualizar track ativa na lista
+    function updateActiveTrack() {
+        document.querySelectorAll('.track').forEach((track, index) => {
+            if (index === currentTrackIndex) {
+                track.classList.add('active');
+            } else {
+                track.classList.remove('active');
+            }
+        });
+    }
+
+    // Formatar tempo (segundos para MM:SS)
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // Atualizar barra de progresso
+    function updateProgress() {
+        if (audio.duration) {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = `${percent}%`;
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+            durationEl.textContent = formatTime(audio.duration);
+        }
+    }
+
+    // Event Listeners
+    playPauseBtn.addEventListener('click', () => {
+        if (audio.src === '') {
+            playTrack(0);
+            return;
+        }
+        
+        if (isPlaying) {
+            audio.pause();
+        } else {
+            audio.play().catch(error => {
+                console.log('Play bloqueado:', error);
+                autoplayMessage.style.display = 'block';
+            });
+        }
+        isPlaying = !isPlaying;
+        updatePlayPauseButton();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+        playTrack(currentTrackIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        playTrack(currentTrackIndex);
+    });
+
+    // Clique na barra de progresso para avançar/retroceder
+    progressBar.addEventListener('click', (e) => {
+        if (!audio.duration) return;
+        
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = percent * audio.duration;
+    });
+
+    // Controle de volume
+    volumeBar.addEventListener('click', (e) => {
+        const rect = volumeBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audio.volume = percent;
+        volumeLevel.style.width = `${percent * 100}%`;
+    });
+
+    // Eventos do áudio
+    audio.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', updateProgress);
+
+    audio.addEventListener('ended', () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        playTrack(currentTrackIndex);
+    });
+
+    audio.addEventListener('play', () => {
+        isPlaying = true;
+        updatePlayPauseButton();
+    });
+
+    audio.addEventListener('pause', () => {
+        isPlaying = false;
+        updatePlayPauseButton();
+    });
+
+    // Inicializar o player
+    function initializePlayer() {
+        initializePlaylist();
+        audio.volume = 0.8;
+        volumeLevel.style.width = '80%';
+        
+        // Tentar reprodução automática após interação do usuário
+        document.addEventListener('click', () => {
+            if (!autoplayAttempted && audio.src === '') {
+                playTrack(0);
+                autoplayAttempted = true;
+            }
+        }, { once: true });
+    }
+
+    // Iniciar quando a página carregar
+    window.addEventListener('load', initializePlayer);
+</script>
+</body>
+</html>
