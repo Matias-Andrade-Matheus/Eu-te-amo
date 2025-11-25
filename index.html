@@ -26,7 +26,7 @@
         overflow-x: hidden;
     }
 
-    a{color:inherit}
+    a{color:inherit; text-decoration:none}
     header{padding:28px 32px;display:flex;align-items:center;justify-content:space-between}
     header .brand{font-weight:700;letter-spacing:1px}
     .container{max-width:1100px;margin:0 auto;padding:16px}
@@ -102,7 +102,6 @@
         overflow: hidden;
     }
     
-    /* Sistema de estrelas caindo */
     .stars-container {
         position: absolute;
         top: 0;
@@ -186,7 +185,6 @@
         filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
     }
 
-    /* Seção com parallax */
     .parallax-section {
         position: relative;
         background-attachment: fixed;
@@ -212,7 +210,6 @@
         z-index: 2;
     }
 
-    /* 6-month gallery (cards consistent style) */
     .gallery{
         display:grid;
         grid-template-columns:repeat(3,1fr);
@@ -308,7 +305,6 @@
         color:var(--muted);
     }
 
-    /* PLAYER ATUALIZADO - DESIGN COMPLETO */
     .player{
         margin:24px 0;
         padding:20px;
@@ -533,36 +529,19 @@
         font-size: 0.9rem;
         color: var(--muted);
     }
-
-    /* final special */
-    .special{
-        margin:30px 0;
-        padding:30px;
-        border-radius:12px;
-        background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(1,74,184,0.02));
-        text-align:center;
-        border:1px dashed rgba(255,255,255,0.03);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .special::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at 50% 50%, rgba(1,74,184,0.03), transparent 70%);
-        z-index: 1;
-    }
-    
-    .special > * {
-        position: relative;
-        z-index: 2;
-    }
     
     .muted{color:var(--muted)}
+    #intoducao h1 {flex: 1; z-index: 0;}
+    .atulizacao {
+        font-size: .85rem;
+        z-index: 2;
+
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+
+        text-align: right;
+    }
 
     @media(max-width:900px){
         .gallery{grid-template-columns:repeat(2,1fr)}
@@ -623,6 +602,9 @@
                     <span class="letra">!</span>
                 </span>
             </h1>
+            <div class="atulizacao">
+                <p class="muted">Eu quero atualizar algumas coisas todo mês... Então vou deixar no <a href="">GitHub</a>.</p>
+            </div>
         </section>
 
         <section class="hero" aria-labelledby="hero-title">
@@ -740,7 +722,7 @@
                     </div>
                     
                     <div class="volume-control">
-                        <span>🔊</span>
+                        <img src="imagens/alto-falante.png" alt="alto-falante" width="20" height="20">
                         <div class="volume-bar" id="volumeBar">
                             <div class="volume-level" id="volumeLevel"></div>
                         </div>
@@ -757,7 +739,7 @@
 
     <footer>
     <div class="container" style="text-align:center; padding:20px 0; font-size:.9rem; color:var(--muted);">
-        &copy; 25 de novembro de 2025 Feito pelo seu admirador secreto, não tão secreto assim, com muito amor e carinho para<br>Camile Marques Ferreira Novais - O amor da minha vida.
+        &copy; Atualizado dia 25 de novembro de 2025<br>Feito pelo seu admirador secreto, não tão secreto assim, com muito amor e carinho para<br>Camile Marques Ferreira Novais - O amor da minha vida.
     </div>
     </footer>
 
@@ -808,26 +790,31 @@
 
     // PLAYER DE MÚSICA COMPLETO
     const playlist = [
-        { title: "Roupa Nova - A Viagem", src: "musicas/a-viagem.mp3", duration: "3:33" },
-        { title: "Tim Maia - Eu Amo Você", src: "musicas/eu-amo-voce.mp3", duration: "4:03" },
-        { title: "Nando Reis - Pra você guardei o amor", src: "musicas/pra-voce-guardei-o-amor.mp3", duration: "3:50" },
-        { title: "Tim Maia - Você", src: "musicas/voce.mp3", duration: "4:04" },
-        { title: "Roupa Nova - Cristina", src: "musicas/cristina.mp3", duration: "3:30" },
-        { title: "Roberto Campos - De Janeiro A Janeiro", src: "musicas/de-janeiro-a-janeiro.mp3", duration: "4:10" },
-        { title: "Ainda bem - Marisa Monte", src: "musicas/ainda-bem.mp3", duration: "4:06" },
-        { title: "Ivyson - Moldura", src: "musicas/moldura.mp3", duration: "3:11" },
-        { title: "Roupa Nova - Seguindo No Trem Azul", src: "musicas/seguindo-no-trem-azul.mp3", duration: "" },
-        { title: "Kamaitachi - Lana", src: "musicas/lana.mp3", duration: "3:02" },
-        { title: "Marisa Monte - Amor I Love You", src: "musicas/amor-i-love-you.mp3", duration: "" },
-        { title: "Agnes e Tiago Iorc - Pode Se Achegar", src: "musicas/pode-se-achegar.mp3", duration: "3:59" },
-        { title: "Stephen Sanchez - Until I Found You", src: "musicas/until-i-found-you.mp3", duration: "" },
-        { title: "Mari Froes - Moça", src: "musicas/moca.mp3", duration: "5:01" },
-        { title: "Marisa Monte - Pra ser sincero", src: "musicas/pra-ser-sincero.mp3", duration: "" },
-        { title: "Tulipa Ruiz - Só Sei Dançar Com Você", src: "musicas/so-sei-dancar-com-voce.mp3", duration: "3:41" },
-        { title: "Stacey Ryan - Fall In Love Alone", src: "musicas/fall-in-love-alone.mp3", duration: "" },
-        { title: "Natiruts - Sorri, Sou Rei", src: "musicas/sorri-sou-rei.mp3", duration: "5:11" },
-        { title: "Jorge Vercillo - Final Feliz", src: "musicas/final-feliz.mp3", duration: "" },
-        { title: "Ana Carolina - Quem de Nós Dois", src: "musicas/quem-de-nos-dois.mp3", duration: "5:03" }
+        { title: "Roupa Nova - A Viagem", src: "musicas/a-viagem.mp3", duration: "3:30" },
+        { title: "Tim Maia - Eu Amo Você", src: "musicas/eu-amo-voce.mp3", duration: "4:04" },
+        { title: "Nando Reis - Pra você guardei o amor", src: "musicas/pra-voce-guardei-o-amor.mp3", duration: "5:44" },
+        { title: "Tim Maia - Você", src: "musicas/voce.mp3", duration: "4:05" },
+        { title: "Roupa Nova - Cristina", src: "musicas/cristina.mp3", duration: "3:17" },
+        { title: "Roberto Campos - De Janeiro A Janeiro", src: "musicas/de-janeiro-a-janeiro.mp3", duration: "3:11" },
+        { title: "Marisa Monte - Ainda bem", src: "musicas/ainda-bem.mp3", duration: "3:36" },
+        { title: "Banda do Mar - Mais Ninguém", src: "musicas/mais-ninguem.mp3", duration: "2:49" },
+        { title: "Roupa Nova - Seguindo No Trem Azul", src: "musicas/seguindo-no-trem-azul.mp3", duration: "3:42" },
+        { title: "Kamaitachi - Lana", src: "musicas/lana.mp3", duration: "2:52" },
+        { title: "Marisa Monte - Amor I Love You", src: "musicas/amor-i-love-you.mp3", duration: "3:12" },
+        { title: "Agnes e Tiago Iorc - Pode Se Achegar", src: "musicas/pode-se-achegar.mp3", duration: "3:49" },
+        { title: "Stephen Sanchez - Until I Found You", src: "musicas/until-i-found-you.mp3", duration: "2:57" },
+        { title: "Mariana Froes - Moça", src: "musicas/moca.mp3", duration: "5:02" },
+        { title: "Marisa Monte - Pra ser sincero", src: "musicas/pra-ser-sincero.mp3", duration: "2:55" },
+        { title: "Tulipa Ruiz - Só Sei Dançar Com Você", src: "musicas/so-sei-dancar-com-voce.mp3", duration: "3:42" },
+        { title: "Stacey Ryan - Fall In Love Alone", src: "musicas/fall-in-love-alone.mp3", duration: "3:26" },
+        { title: "Natiruts - Sorri, Sou Rei", src: "musicas/sorri-sou-rei.mp3", duration: "5:04" },
+        { title: "Jorge Vercillo - Final Feliz", src: "musicas/final-feliz.mp3", duration: "3:49" },
+        { title: "Ana Carolina - Quem de Nós Dois", src: "musicas/quem-de-nos-dois.mp3", duration: "5:06" },
+        { title: "VMZ - Amor", src: "musicas/amor.mp3", duration: "5:36" },
+        { title: "Rita Lee - Mânia de Você", src: "musicas/mania-de-voce.mp3", duration: "4:56" },
+        { title: "Marina Sena - Por Supuesto", src: "musicas/por-supuesto.mp3", duration: "3:07" },
+        { title: "Joyce Alane - Idiota Raiz (Deixa ir)", src: "musicas/idiota-raiz.mp3", duration: "2:35" },
+        { title: "Ivyson - Moldura", src: "musicas/moldura.mp3", duration: "3:12" },
     ];
 
     const audio = new Audio();
